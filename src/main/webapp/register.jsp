@@ -30,12 +30,12 @@
     </script>
 </head>
 <body>
-<form method="get"  onsubmit="return check()">
+<form method="post"  action="/YuPengxiu2020211001001303/register" onsubmit="return check()">
     <p><input type="text" name="username" placeholder="username" required></p>
     <p><input type="password" name="password" placeholder="password" required id="password"></p>
     <p><input type="email" name="Email" placeholder="Email"></p>
     <p>Gender<input  type="radio" name="sex" value="Male" checked="checked">Male  <input  type="radio" name="sex" placeholder="Female">Female</p>
-    <p><p><input type="date" name="birth" required></p>
+    <p><input type="date" name="birth" required></p>
     <input name="submit" type="submit" value="submit">
     <input name="reset" type="reset" value="reset">
 </form>
