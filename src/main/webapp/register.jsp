@@ -31,6 +31,7 @@
 </head>
 <body>
 <form method="post"  action="/YuPengxiu2020211001001303/register" onsubmit="return check()">
+    <p><input type="text" name="id" placeholder="id" required></p>
     <p><input type="text" name="username" placeholder="username" required></p>
     <p><input type="password" name="password" placeholder="password" required id="password"></p>
     <p><input type="email" name="Email" placeholder="Email"></p>
