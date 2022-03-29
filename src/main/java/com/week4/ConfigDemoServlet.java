@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-@WebServlet(name="ConfitDemoServlet",value="/confit",
+@WebServlet(name="ConfitDemoServlet",value="/config",
         initParams={
                 @WebInitParam(name="name",value="YuPengxiu"),
                 @WebInitParam(name="studentid",value="2020211001001303"),
