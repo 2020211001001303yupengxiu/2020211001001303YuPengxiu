@@ -18,20 +18,21 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        ServletContext context=getServletContext();
+        /*ServletContext context=getServletContext();
         String driver=context.getInitParameter("driver");
         String url=context.getInitParameter("url");
         String username=context.getInitParameter("username");
         String password=context.getInitParameter("password");
-        try {/*String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        try {*//*String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url="jdbc:sqlserver://localhost:1433;database=userdb;encrypt=false";
         String username="sa";
-        String password="123";*/
+        String password="123";*//*
             Class.forName(driver);
             con = DriverManager.getConnection(url,username,password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        }
+        }*/
+        con = (Connection) getServletContext().getAttribute("con");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -45,15 +46,25 @@ public class LoginServlet extends HttpServlet {
             ps.executeQuery();
             rs=ps.executeQuery();
             if (rs.next()){
-                writer.println("<h1>Login Success!</h1>");
-                writer.println("<h1>Welcome,"+rs.getString("username")+"</h1>");
+                //out.println("Login Success!!!Welcome!");
+                request.setAttribute("id",rs.getString("id"));
+                request.setAttribute("username",rs.getString("username"));
+                request.setAttribute("password",rs.getString("password"));
+                request.setAttribute("Email",rs.getString("email"));
+                request.setAttribute("gender",rs.getString("sex"));
+                request.setAttribute("birth",rs.getString("birth"));
+                request.getRequestDispatcher("userInfo.jsp").forward(request,response);;
+                return;
             }
-            else
-                writer.println("<h1>Wrong username or password!</h1>");
+            else{
+                //out.println("Login Failed!");
+                request.setAttribute("message","Username or Password Error!!!");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        destroy();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,16 +72,20 @@ public class LoginServlet extends HttpServlet {
     }
     @Override
     public void destroy() {
-        super.destroy();
-        try {
-            rs.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (rs!=null)
+        {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        try {
-            ps.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (ps!=null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         try {
             con.close();

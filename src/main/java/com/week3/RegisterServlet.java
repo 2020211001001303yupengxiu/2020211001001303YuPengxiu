@@ -19,20 +19,21 @@ public class RegisterServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        ServletContext context=getServletContext();
+        /*ServletContext context=getServletContext();
         String driver=context.getInitParameter("driver");
         String url=context.getInitParameter("url");
         String username=context.getInitParameter("username");
         String password=context.getInitParameter("password");
-        try {/*String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        try {*//*String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url="jdbc:sqlserver://localhost:1433;database=userdb;encrypt=false";
         String username="sa";
-        String password="123";*/
+        String password="123";*//*
             Class.forName(driver);
             con = DriverManager.getConnection(url,username,password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        }
+        }*/
+         con = (Connection) getServletContext().getAttribute("con");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
@@ -61,7 +62,8 @@ public class RegisterServlet extends HttpServlet {
             ps.setString(5,Gender);
             ps.setString(6,birth);
             ps.executeUpdate();
-            ps = con.prepareStatement(sql2);
+            response.sendRedirect("login.jsp");
+/*            ps = con.prepareStatement(sql2);
             ps.executeQuery();
             rs=ps.executeQuery();
             writer.println("<table border=1> <tr> <th>id</th> <th>username</th> <th>password</th> <th>email</th>" +
@@ -74,9 +76,12 @@ public class RegisterServlet extends HttpServlet {
                 writer.println(" <th>"+rs.getString("sex")+"</th> ");
                 writer.println(" <th>"+rs.getString("birth")+"</th></tr>");
             }
-            writer.println("</table>");
+            writer.println("</table>");*/
+
         } catch (SQLException e) {
             e.printStackTrace();
+            request.setAttribute("fail","register fail!");
+            request.getRequestDispatcher("register.jsp").forward(request,response);
         }
        destroy();
     }
@@ -88,7 +93,10 @@ public class RegisterServlet extends HttpServlet {
     public void destroy() {
         super.destroy();
         try {
-            rs.close();
+            if(rs!=null){
+                rs.close();
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

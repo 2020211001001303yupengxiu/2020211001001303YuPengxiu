@@ -35,4 +35,7 @@
         <param-name>password</param-name>
         <param-value>123</param-value>
     </context-param>
-        </web-app>
+    <listener>
+        <listener-class>com.week6.JDBCServletContextListener</listener-class>
+    </listener>
+</web-app>
