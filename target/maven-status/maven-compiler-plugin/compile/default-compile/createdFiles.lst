@@ -1,8 +1,12 @@
 com\week2\HelloWorldServlet.class
 com\week4\ConfigDemoServlet.class
 com\week1\HelloWorld.class
+com\dao\UserDao.class
 com\week3\RegisterServlet.class
+com\controllar\HomeServlet.class
+com\model\User.class
 com\week5\LoginServlet.class
 com\week6\JDBCServletContextListener.class
 com\week6\SearchServlet.class
 com\week6\RedirectServlet.class
+com\dao\IUserDao.class

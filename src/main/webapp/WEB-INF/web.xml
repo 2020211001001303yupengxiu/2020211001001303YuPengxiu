@@ -38,4 +38,7 @@
     <listener>
         <listener-class>com.week6.JDBCServletContextListener</listener-class>
     </listener>
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
 </web-app>

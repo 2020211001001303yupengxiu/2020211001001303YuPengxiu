@@ -1,5 +1,8 @@
 package com.week5;
 
+import com.dao.UserDao;
+import com.model.User;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +40,22 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String sql1 = " SELECT * FROM usertable where username=? and password=?";
+        UserDao userDao=new UserDao();
+        try {
+            User user=userDao.findByUsernamePassword(con,username,password);
+            if(user!=null){
+                request.setAttribute("user",user);
+                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+            }else{
+                request.setAttribute("message","Username or Password Error!!!");
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /*String sql1 = " SELECT * FROM usertable where username=? and password=?";
         PrintWriter writer = response.getWriter();
         try {
             ps = con.prepareStatement(sql1);
@@ -64,11 +82,12 @@ public class LoginServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
     }
     @Override
     public void destroy() {
