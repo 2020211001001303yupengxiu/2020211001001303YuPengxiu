@@ -1,7 +1,9 @@
+com\filter\FrontEndAuthenticationFilter.class
 com\controllar\LogoutServlet.class
 com\week5\LoginServlet.class
 com\week6\JDBCServletContextListener.class
 com\week6\SearchServlet.class
+com\filter\AdminAuthenticationFilter.class
 com\week2\HelloWorldServlet.class
 com\week4\ConfigDemoServlet.class
 com\week1\HelloWorld.class
