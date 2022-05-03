@@ -11,6 +11,7 @@ com\dao\UserDao.class
 com\week3\RegisterServlet.class
 com\controllar\HomeServlet.class
 com\model\User.class
+com\controllar\AdminHomeServlet.class
 com\week6\RedirectServlet.class
 com\dao\IUserDao.class
 com\controllar\UpdateUserServlet.class
