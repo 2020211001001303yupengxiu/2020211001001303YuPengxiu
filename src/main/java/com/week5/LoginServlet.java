@@ -14,8 +14,6 @@ import java.sql.*;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     Connection con=null;
-    PreparedStatement ps= null;
-    ResultSet rs = null;
     @Override
     public void init() throws ServletException {
         super.init();
@@ -104,25 +102,5 @@ public class LoginServlet extends HttpServlet {
     }
     @Override
     public void destroy() {
-        if (rs!=null)
-        {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (ps!=null) {
-            try {
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

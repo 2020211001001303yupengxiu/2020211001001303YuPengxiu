@@ -27,7 +27,7 @@ public class UserDao implements IUserDao {
         ps.setString(3, user.getEmail());
         ps.setString(4, user.getGender());
         ps.setString(5, user.getBirth());
-        ps.setString(6,user.getId());
+        ps.setInt(6,user.getId());
         ps.executeUpdate();
         return 0;
     }
@@ -52,7 +52,7 @@ public class UserDao implements IUserDao {
         User user = null;
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString("id"));
+            user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));

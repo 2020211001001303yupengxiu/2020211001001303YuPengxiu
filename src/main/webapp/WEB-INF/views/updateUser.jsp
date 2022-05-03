@@ -16,7 +16,7 @@
     <p>password:<input type="password" name="password" placeholder="password" value="<%=u.getPassword()%>" required id="password"></p>
     <p>email:<input type="email" name="Email" placeholder="Email" value="<%=u.getEmail()%>"></p>
     <p>Gender:<input  type="radio" name="sex" value="Male" <%="Male".equals(u.getGender())?"checked":""%> checked="checked">Male
-        <input  type="radio" name="sex" placeholder="Female" <%="Female".equals(u.getGender())?"checked":""%>>Female</p>
+        <input  type="radio" name="sex" value="Female" placeholder="Female" <%="Female".equals(u.getGender())?"checked":""%>>Female</p>
     <p>BirthDate:<input type="date" name="birth" value="<%=u.getBirth()%>" required></p>
     <input name="submit" type="submit" value="Save Changes">
 </form>

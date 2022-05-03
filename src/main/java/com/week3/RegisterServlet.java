@@ -36,11 +36,10 @@ public class RegisterServlet extends HttpServlet {
          con = (Connection) getServletContext().getAttribute("con");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String Email = request.getParameter("Email");
-        String Gender = request.getParameter("sex");
+        String Email = request.getParameter("email");
+        String Gender = request.getParameter("gender");
         String birth = request.getParameter("birth");
 
         /*PrintWriter writer = response.getWriter();
@@ -50,19 +49,18 @@ public class RegisterServlet extends HttpServlet {
         writer.println("<br>Gender :"+Gender);
         writer.println("<br>birth :"+birth);
         writer.close();*/
-        String sql1 = " insert into usertable values (?,?,?,?,?,?) ";
+        String sql1 = " insert into usertable(username,password,email,sex,birth) values (?,?,?,?,?) ";
         String sql2 = " select* from usertable ";
         PrintWriter writer = response.getWriter();
         try {
             ps = con.prepareStatement(sql1);
-            ps.setString(1,id);
-            ps.setString(2,username);
-            ps.setString(3,password);
-            ps.setString(4,Email);
-            ps.setString(5,Gender);
-            ps.setString(6,birth);
+            ps.setString(1,username);
+            ps.setString(2,password);
+            ps.setString(3,Email);
+            ps.setString(4,Gender);
+            ps.setString(5,birth);
             ps.executeUpdate();
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
 /*            ps = con.prepareStatement(sql2);
             ps.executeQuery();
             rs=ps.executeQuery();
@@ -81,13 +79,14 @@ public class RegisterServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("fail","register fail!");
-            request.getRequestDispatcher("register.jsp").forward(request,response);
+            request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
         }
        destroy();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
     @Override
     public void destroy() {
