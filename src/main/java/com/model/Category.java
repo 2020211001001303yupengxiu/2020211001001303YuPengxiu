@@ -84,12 +84,12 @@ public class Category {
     }
     public static String findByCategoryId(Connection con,int categoryId) throws SQLException {
         String categoryName = null;
-        String query = "select CategoryName from Category where categoryId=?";
+        String query = "select CategoryName from Category where CategoryId=?";
         PreparedStatement state = con.prepareStatement(query);
         state.setInt(1,categoryId);
         ResultSet result = state.executeQuery();
         while(result.next()){
-            categoryName =result.getString("categoryName");
+            categoryName =result.getString("CategoryName");
         }
         return categoryName;
     }

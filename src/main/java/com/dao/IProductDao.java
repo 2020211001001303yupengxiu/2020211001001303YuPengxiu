@@ -2,7 +2,6 @@ package com.dao;
 
 import com.model.Product;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -55,5 +54,5 @@ public interface IProductDao {
 	 * Select all product by name like
 	 * @return List of product
 	 */
-	public List<Product> getPicture(Integer productId, Connection con) throws SQLException;
+	public byte[] getPicture(Integer productId, Connection con) throws SQLException;
 }

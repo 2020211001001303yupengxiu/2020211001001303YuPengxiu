@@ -7,7 +7,7 @@
 --%>
 <%@include file="header.jsp"%>
 <form method="post"  action="/YuPengxiu2020211001001303/register" onsubmit="return check()">
-    <p>ID:<input type="text" name="id" placeholder="id" required></p>
+<%--    <p>ID:<input type="text" name="id" placeholder="id" required></p>--%>
     <p>username:<input type="text" name="username" placeholder="username" required></p>
     <p>password:<input type="password" name="password" placeholder="password" required id="password"></p>
     <p>email:<input type="email" name="Email" placeholder="Email"></p>

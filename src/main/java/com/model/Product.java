@@ -5,7 +5,7 @@ import java.io.InputStream;
 public class Product {
     private int productId;
     private String productName;
-    private String ProductDescrption;
+    private String productDescription;
     private InputStream picture;
     private Double price;
     private int categoryId;
@@ -13,10 +13,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, String productName, String productDescrption, InputStream picture, Double price, int categoryId) {
+    public Product(int productId, String productName, String productDescription, InputStream picture, Double price, int categoryId) {
         this.productId = productId;
         this.productName = productName;
-        ProductDescrption = productDescrption;
+        this.productDescription = productDescription;
         this.picture = picture;
         this.price = price;
         this.categoryId = categoryId;
@@ -38,12 +38,12 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getProductDescrption() {
-        return ProductDescrption;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setProductDescrption(String productDescrption) {
-        ProductDescrption = productDescrption;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
     public InputStream getPicture() {
@@ -75,7 +75,7 @@ public class Product {
         return "Product{" +
                 "productId=" + productId +
                 ", productName='" + productName + '\'' +
-                ", ProductDescrption='" + ProductDescrption + '\'' +
+                ", ProductDescrption='" + productDescription + '\'' +
                 ", picture=" + picture +
                 ", price=" + price +
                 ", categoryId=" + categoryId +

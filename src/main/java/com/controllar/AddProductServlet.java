@@ -16,7 +16,6 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Logger;
 
 @WebServlet("/admin/addProduct")
 @MultipartConfig(maxFileSize = 16177215)
@@ -45,7 +44,7 @@ public class AddProductServlet extends HttpServlet {
         Product product = new Product();
         product.setProductName(productName);
         product.setPrice(price);
-        product.setProductDescrption(productDescription);
+        product.setProductDescription(productDescription);
         product.setCategoryId(categoryId);
         product.setPicture(inputStream);
         ProductDao dao = new ProductDao();
