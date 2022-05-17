@@ -31,6 +31,7 @@ public class GetImgServlet extends HttpServlet {
         ProductDao dao=new ProductDao();
         int id=0;
         if(request.getParameter("id")!=null){
+            System.out.println(1);
             id=Integer.parseInt(request.getParameter("id"));
         }
         try{

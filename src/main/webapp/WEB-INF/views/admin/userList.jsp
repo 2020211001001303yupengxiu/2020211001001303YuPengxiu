@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@include file="../header.jsp" %>
 
 <section id="z`z`">
@@ -35,22 +37,30 @@
 					</thead>
 					<tbody>
 					<!-- loop_start -->
-					
+					<sql:setDataSource var="myDS"
+									   driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+									   url="jdbc:sqlserver://localhost:1433;database=userdb;encrypt=false;"
+									   user="sa"
+									   password="123"/>
+					<sql:query var="allUser" dataSource="${myDS}">
+						Select * from usertable;
+					</sql:query>
+					<c:forEach var="row" items="${allUser.rows}">
 						<tr>
 							<td class="cart_description">
-								<p>username</p>
+								<p>${row.username}</p>
 							</td>
 								<td class="cart_description">
-								<p>password</p>
+								<p>${row.password}</p>
 							</td>
 							<td class="cart_description">
-								<p>email </p>
+								<p>${row.email} </p>
 							</td>
 							<td class="cart_description">
-							<p>gender </p>
+							<p>${row.sex} </p>
 							</td>
 							<td class="cart_description">
-								<p >birthDate</p>
+								<p >${row.birth}</p>
 							</td>
 							
 							<td class="cart_delete">
