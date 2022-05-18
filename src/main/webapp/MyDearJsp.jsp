@@ -15,7 +15,7 @@
     <%
         String ID=request.getParameter("ID");
         String name=request.getParameter("name");
-        String Class=request.getParameter("class");
+        String Class=request.getParameter("Class");
         String submit=request.getParameter("submit");
        /* out.println("ID:"+ID+"<br/>");
         out.println("name:"+name+"<br/>");
