@@ -13,6 +13,7 @@ com\week6\JDBCServletContextListener.class
 com\model\Category.class
 com\week6\SearchServlet.class
 com\filter\AdminAuthenticationFilter.class
+com\Lab1\MyDearServlet.class
 com\Lab1\LifeCycleServlet.class
 com\week4\ConfigDemoServlet.class
 com\dao\UserDao.class

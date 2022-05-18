@@ -13,11 +13,10 @@
 	                        <c:forEach var="c" items="${categoryList}">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="<%=basePath %>shop?categoryId=id">Category Name</a></h4>
+									<h4 class="panel-title"><a href="<%=basePath %>shop?categoryId=${c.categoryId}">${c.categoryName}</a></h4>
 								</div>
 							</div>
 							</c:forEach>
-							
 							<!-- loop_end -->
 						</div><!--/category-products-->
 					
@@ -84,7 +83,7 @@
 								<p>Web ID: ${p.productId}</p>
 								<img src="images/product-details/rating.png" alt="" /><!-- picture -->
 								<p></p>
-									<p>RMB  price</p>
+									<p>${p.price}</p>
 									<form action="<%=basePath %>cart">
 									<!-- <label>Quantity:</label>
 									<input type="text"  name="quantity"/> -->
@@ -113,7 +112,7 @@
 						<div class="tab-pane fade active in" id="details" >
 								<div class="col-sm-12">
 									
-									<p>product Description</p>
+									<p>${p.productDescription}</p>
 								
 								</div>
 							</div>

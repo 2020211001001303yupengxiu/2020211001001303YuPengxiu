@@ -51,7 +51,7 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
 						<!-- loop_start -->
-							
+							<c:forEach var="p" items="${productList}">
 						<div class="col-sm-4 padding-right">
 						
 							<div class="product-image-wrapper">
@@ -72,11 +72,12 @@
 							</div>
 							
 						</div>
+							</c:forEach>
 				<!-- loop_end -->
 						
 					</div><!--features_items-->
 					<ul class="pagination">
-							<li><a href="">&laquo;</a></li><li class="active"><a href="">1</a></li>
+							<li><a href="">&raquo;</a></li><li class="active"><a href="">1</a></li>
 							<li><a href="">2</a></li>
 							<li><a href="">3</a></li>
 							<li><a href="">&raquo;</a></li>

@@ -80,7 +80,7 @@ public class RegisterServlet extends HttpServlet {
             e.printStackTrace();
             request.setAttribute("fail","register fail!");
             request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
-        }
+    }
        destroy();
     }
 
