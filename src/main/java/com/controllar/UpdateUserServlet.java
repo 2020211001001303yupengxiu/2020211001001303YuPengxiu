@@ -49,7 +49,7 @@ public class UpdateUserServlet extends HttpServlet {
 
             //ange request(one page) to session -- can get session attribute in many jsp
             session.setAttribute("user",user);
-            request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+            request.getRequestDispatcher("accountDetails").forward(request,response);
         }
         else {
             request.setAttribute("updateFail","updateUser fail!");
