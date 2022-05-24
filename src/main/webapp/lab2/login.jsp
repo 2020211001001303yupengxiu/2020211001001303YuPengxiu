@@ -12,6 +12,11 @@
     <title>Login</title>
 </head>
 <body>
+<%
+    if (request.getAttribute("message")!=null){
+        out.print(request.getAttribute("message"));
+    }
+%>
 <form action="validate.jsp">
     Username : <input type="text" name="username"><br>
     Password : <input type="password" name="password"><br>
