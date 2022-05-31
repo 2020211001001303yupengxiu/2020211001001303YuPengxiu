@@ -36,6 +36,7 @@ com\week4\ConfigDemoServlet.class
 com\controllar\ProductListServlet.class
 com\dao\UserDao.class
 com\controllar\HomeServlet.class
+com\Lab3\CalServlet.class
 com\model\User.class
 com\controllar\AdminHomeServlet.class
 com\controllar\AddProductServlet.class
