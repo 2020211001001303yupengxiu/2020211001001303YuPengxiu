@@ -15,7 +15,7 @@
 <form method="post"  action="MyDearJsp.jsp">
     <%--    <p>ID:<input type="text" name="id" placeholder="id" required></p>--%>
     <p>name:<input type="text" name="name" placeholder="name" required></p>
-    <p>class:<input type="text" name="class" placeholder="class" required></p>
+    <p>class:<input type="text" name="Class" placeholder="Class" required></p>
     <p>ID:<input type="text" name="ID" placeholder="ID"></p>
     <input name="submit" type="submit" value="Send data to server">
 </form>

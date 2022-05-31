@@ -16,13 +16,16 @@
         String ID=request.getParameter("ID");
         String name=request.getParameter("name");
         String Class=request.getParameter("Class");
-        out.println("ID:"+ID+"<br/>");
+        String submit=request.getParameter("submit");
+       /* out.println("ID:"+ID+"<br/>");
         out.println("name:"+name+"<br/>");
-        out.println("Class:"+Class);
+        out.println("Class:"+Class+"<br/>");
+        out.println("submit:"+submit);*/
     %>
     name: ${param.name}<br/>
-    id: ${param.ID}<br/>
+    ID: ${param.ID}<br/>
     Class: ${param.Class}<br/>
+    submit: ${param.submit}
 </table>
 </body>
 </html>
