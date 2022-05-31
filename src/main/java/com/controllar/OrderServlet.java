@@ -34,8 +34,7 @@ public class OrderServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        int customerId = request.getParameter("cotomerId") != null ? Integer.parseInt(request.getParameter("cutomerId")) : 0;
+        int customerId = request.getParameter("customerId") != null ? Integer.parseInt(request.getParameter("customerId")) : 0;
         int paymentId = request.getParameter("paymentId") != null ? Integer.parseInt(request.getParameter("paymentId")) : 0;
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -47,7 +46,7 @@ public class OrderServlet extends HttpServlet {
         String city = request.getParameter("city");
         String country = request.getParameter("country");
         String notes = request.getParameter("notes");
-        double orderTotal = request.getParameter("orderTotal") != null ? Double.parseDouble(request.getParameter("order")) : 0.0;
+        double orderTotal = request.getParameter("orderTotal") != null ? Double.parseDouble(request.getParameter("orderTotal")) : 0.0;
         String message = null;
         if (customerId == 0 || paymentId == 0 || firstName == null || firstName.trim().length() == 0 || Phone == null ||
                 Phone.trim().length() == 0 || address1 == null || address1.trim().length() == 0 ||
@@ -78,6 +77,7 @@ public class OrderServlet extends HttpServlet {
         if (session != null && session.getAttribute("cart") != null) {
             ArrayList<Item> cartItems = (ArrayList<Item>) session.getAttribute("cart");
             o.setOrderDetails(new HashSet<Item>(cartItems));
+            System.out.println(new HashSet<Item>(cartItems));
         }
         OrderDao dao = new OrderDao();
         int n = 0;
@@ -93,10 +93,9 @@ public class OrderServlet extends HttpServlet {
     }
         protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
         ServletException, IOException {
-
             List<Payment> paymentTypeList = Payment.findAllPayment(con);
             request.setAttribute("paymentTypeList", paymentTypeList);
-            String path = "/WEb-INF/views/order.jsp";
+            String path = "/WEB-INF/views/order.jsp";
             request.getRequestDispatcher(path).forward(request, response);
         }
     }

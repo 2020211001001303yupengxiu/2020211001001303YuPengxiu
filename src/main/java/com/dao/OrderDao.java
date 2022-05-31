@@ -39,7 +39,7 @@ public class OrderDao implements IOrderDao {
 			//By default,committed right after it is executed,disable the auto commit mode to enable two or more statements to be grouped into a transaction// begin the transaction:
 			con.setAutoCommit(false);
 			//sql =INSERT INTO userdb.order for mysql
-			String sql="INSERT INTO [dbo].[Order](CustomerId,PaymentId,OrderDate,FirstName,LastName,Address1,Address2,city,State,PostalCode,Country,Phone,Notes,OrderTotal) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql="INSERT INTO [dbo].[Order](customerId,paymentId,orderDate,firstName,lastName,address1,address2,city,state,postalCode,country,phone,notes,orderTotal) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, order.getCustomerId());
 			st.setInt(2, order.getPaymentId());
@@ -60,7 +60,7 @@ public class OrderDao implements IOrderDao {
 			flag = st.executeUpdate();
 			
 			//get newly inserted OrderId
-				String lastId="SELECT max(OrderI) as OrderId from [dbo].[Order] ";//"SELECT max(orderid) as orderId from userdb.order"; for mysql
+				String lastId="SELECT max(orderId) as orderId from [dbo].[Order] ";//"SELECT max(orderid) as orderId from userdb.order"; for mysql
 				ResultSet rs=con.createStatement().executeQuery(lastId);
 				rs.next();
 				int orderId=rs.getInt("orderId");
@@ -68,7 +68,7 @@ public class OrderDao implements IOrderDao {
 				Set<Item> orderDetails =order.getOrderDetails();
 				//OrderDetailsDao odDao=new OrderDetailsDao();
 				Iterator<Item> i=orderDetails.iterator();
-				String sql1="INSERT INTO orderdetail(OrderId,ProductId,price,Quantity,Total) values(?,?,?,?,?)";
+				String sql1="INSERT INTO orderdetail(orderId,productId,price,quantity,total) values(?,?,?,?,?)";
 				PreparedStatement st1 = con.prepareStatement(sql1);
 				while(i.hasNext()){
 					Item item= i.next();
@@ -236,7 +236,7 @@ public class OrderDao implements IOrderDao {
 	public List<Item> findItemsByOrderId(Connection con,int orderId) {
 		List<Item> itemList=new ArrayList<Item>();
 		try {
-			String sql="SELECT 	* FROM 0rderDetail AS o INNER JOIN Product AS p ON o.ProductId=p.ProductId WHERE o.OrderId="+orderId;
+			String sql="SELECT 	* FROM OrderDetail AS o INNER JOIN Product AS p ON o.ProductId=p.ProductId WHERE o.OrderId="+orderId;
 			ResultSet rs=con.createStatement().executeQuery(sql);
 			while(rs.next()){
 				Item i=new Item();

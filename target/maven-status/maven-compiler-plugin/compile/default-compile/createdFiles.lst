@@ -1,6 +1,7 @@
 com\filter\FrontEndAuthenticationFilter.class
 com\model\Item.class
 com\week5\LoginServlet.class
+com\controllar\ContactUsServlet.class
 com\controllar\UserListServlet.class
 com\Lab2\LoginFilter.class
 com\dao\ProductDao.class
@@ -15,6 +16,7 @@ com\Lab2\login.class
 com\week6\RedirectServlet.class
 com\model\Order.class
 com\dao\IUserDao.class
+com\controllar\AdminOrderList.class
 com\controllar\LogoutServlet.class
 com\dao\OrderDao.class
 com\model\Payment.class

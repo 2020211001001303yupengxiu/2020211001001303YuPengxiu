@@ -160,7 +160,7 @@
 	
 			<div class="payment-options">
 			<!-- loop_start -->
-				<c:forEach var="pType" items="${patmentTypeList}">
+				<c:forEach var="pType" items="${paymentTypeList}">
 					<span>
 						<label><input name="paymentId" value="1" type="checkbox" varStatus="status"  value="${pType.paymentId}">${pType.paymentType}</label>
 					</span>

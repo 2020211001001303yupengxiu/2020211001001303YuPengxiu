@@ -38,7 +38,8 @@ public class AccountDetailsServlet extends HttpServlet {
         int id=user.getId();
         UserDao dao =new UserDao() ;
         try {
-                user=dao. findById(con, id);
+                user=dao.findById(con, id);
+            System.out.println(user);
         request.setAttribute( "user", user);
         OrderDao orderDao=new OrderDao();
         List<Order> orderList=orderDao.findByUserId(con, id) ;
